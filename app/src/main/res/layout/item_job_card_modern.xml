@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/spacing_xs"
+    app:cardCornerRadius="@dimen/corner_radius_md"
+    app:cardElevation="@dimen/elevation_sm"
+    app:cardBackgroundColor="@color/surface_container"
+    app:strokeColor="@color/outline_variant"
+    app:strokeWidth="1dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_md">
+
+        <!-- Job image -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/jobImageContainer"
+            android:layout_width="@dimen/job_card_image_size"
+            android:layout_height="@dimen/job_card_image_size"
+            app:cardCornerRadius="@dimen/corner_radius_sm"
+            app:cardElevation="@dimen/elevation_xs"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/jobImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_work_placeholder"
+                android:contentDescription="@string/cd_job_image" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Job title -->
+        <TextView
+            android:id="@+id/jobTitleText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_md"
+            android:layout_marginEnd="@dimen/spacing_sm"
+            android:text="Construction Worker Needed"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            android:textColor="@color/on_surface"
+            android:textStyle="bold"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_constraintEnd_toStartOf="@+id/statusChip"
+            app:layout_constraintStart_toEndOf="@+id/jobImageContainer"
+            app:layout_constraintTop_toTopOf="@+id/jobImageContainer" />
+
+        <!-- Status chip -->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/statusChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/status_active"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            app:chipBackgroundColor="@color/status_active"
+            app:chipStrokeWidth="0dp"
+            app:chipMinHeight="24dp"
+            app:textStartPadding="@dimen/spacing_xs"
+            app:textEndPadding="@dimen/spacing_xs"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Company name -->
+        <TextView
+            android:id="@+id/companyNameText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_xs"
+            android:text="ABC Construction Co."
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            android:textColor="@color/on_surface_variant"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/jobImageContainer"
+            app:layout_constraintTop_toBottomOf="@+id/jobTitleText" />
+
+        <!-- Location and budget row -->
+        <LinearLayout
+            android:id="@+id/detailsLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_md"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/jobImageContainer"
+            app:layout_constraintTop_toBottomOf="@+id/companyNameText">
+
+            <!-- Location -->
+            <ImageView
+                android:layout_width="@dimen/icon_size_xs"
+                android:layout_height="@dimen/icon_size_xs"
+                android:src="@drawable/ic_location"
+                android:contentDescription="Location"
+                app:tint="@color/on_surface_variant" />
+
+            <TextView
+                android:id="@+id/locationText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/spacing_xs"
+                android:layout_marginEnd="@dimen/spacing_md"
+                android:text="Mumbai, Maharashtra"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                android:textColor="@color/on_surface_variant"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <!-- Budget -->
+            <ImageView
+                android:layout_width="@dimen/icon_size_xs"
+                android:layout_height="@dimen/icon_size_xs"
+                android:src="@drawable/ic_currency"
+                android:contentDescription="Budget"
+                app:tint="@color/primary" />
+
+            <TextView
+                android:id="@+id/budgetText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_xs"
+                android:text="₹500/day"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                android:textColor="@color/primary"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- Skills required -->
+        <TextView
+            android:id="@+id/skillsText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:text="Skills: Masonry, Concrete work, Safety protocols"
+            android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+            android:textColor="@color/on_surface_variant"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jobImageContainer" />
+
+        <!-- Bottom row with time and action -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_md"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/skillsText">
+
+            <!-- Posted time -->
+            <TextView
+                android:id="@+id/postedTimeText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Posted 2 hours ago"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                android:textColor="@color/on_surface_variant"
+                android:drawableStart="@drawable/ic_time"
+                android:drawablePadding="@dimen/spacing_xs"
+                android:drawableTint="@color/on_surface_variant"
+                android:gravity="center_vertical" />
+
+            <!-- Apply button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/applyButton"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Apply"
+                android:textColor="@color/primary"
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                app:icon="@drawable/ic_send"
+                app:iconSize="16dp"
+                app:iconGravity="textStart"
+                app:iconPadding="@dimen/spacing_xs" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
